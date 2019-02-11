@@ -1,4 +1,4 @@
-package com.todoapplication;
+package com.todoreactnative;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
@@ -13,15 +13,16 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "TodoApplication";
+        return "TodoReactNative";
     }
+
     @Override
     protected ReactActivityDelegate createReactActivityDelegate() {
-      return new ReactActivityDelegate(this, getMainComponentName()) {
-        @Override
-        protected ReactRootView createRootView() {
-        return new RNGestureHandlerEnabledRootView(MainActivity.this);
-        }
-      };
+        return new ReactActivityDelegate(this, getMainComponentName()) {
+            @Override
+            protected ReactRootView createRootView() {
+                return new RNGestureHandlerEnabledRootView(MainActivity.this);
+            }
+        };
     }
 }

@@ -1,4 +1,4 @@
-package com.todoapplication;
+package com.todoreactnative;
 
 import android.app.Application;
 
