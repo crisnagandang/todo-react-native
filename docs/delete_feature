@@ -1,0 +1,23 @@
+Delete Flow:
+
+1. Hold the task for 2 seconds.
+2. Edit mode will be triggered.
+3. Check/tick the task you want to delete.
+4. Click the delete button.
+
+
+
+Integration to the UI - Listing.
+
+Ref 2 - Edit mode will be triggered.
+    2.1 The app would have a visual indication that the it is now in delete mode, change to header color or vibrate.
+    2.2 A cancel button should be displayed.
+    2.3 The Add button will be replaced by a delete button.
+    2.4 The task that was hold to triggered the delete button will be enabled by default.
+
+Ref 3 - Check/tick the task you want to delete.
+    3.1 An option to select all the task would be visible.
+    3.2 Can check and uncheck a specific task.
+
+Ref 4 - Click the delete button.
+    4.1 Upon clicking the button, a verification should be displayed wethere to Accept or Cancel the deletion.
