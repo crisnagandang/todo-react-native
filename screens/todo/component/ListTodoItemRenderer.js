@@ -7,18 +7,27 @@ class ListTodoItemRenderer extends React.Component {
     onPress(todo);
   };
 
-  _handleCompleteTodo = () => {
-    const { todo, completeTodo } = this.props;
-    completeTodo(todo.key);
+  _handleTick = () => {
+    const { todo, onTick } = this.props;
+    onTick(todo.key);
+  };
+
+  _handleOnLongPress = () => {
+    this.props.onLongPress();
   };
 
   render() {
     const { todo } = this.props;
     return todo.completed ? null : (
       <View style={{ display: "flex", flexDirection: "row" }}>
-        <CheckBox onChange={this._handleCompleteTodo} />
+        <CheckBox onChange={this._handleTick} />
         <View style={{ padding: 10, flex: 2 }}>
-          <Text onPress={this._handleOnPress}>{todo.task}</Text>
+          <Text
+            onPress={this._handleOnPress}
+            onLongPress={this._handleOnLongPress}
+          >
+            {todo.task}
+          </Text>
         </View>
       </View>
     );

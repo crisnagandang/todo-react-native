@@ -12,6 +12,7 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 import TodoBaseScreen from "./screens/todo/TodoBaseScreen";
 import createTodoScreen from "./screens/todo/module/CreateTodoScreen";
 import detailsTodoScreen from "./screens/todo/module/DetailsTodoScreen";
+import deleteTodoScreen from "./screens/todo/module/DeleteTodoScreen";
 
 type Props = {};
 class App extends React.Component<Props> {
@@ -23,7 +24,8 @@ class App extends React.Component<Props> {
 const AppStackNavigator = createStackNavigator({
   todoScreen: { screen: TodoBaseScreen },
   createTodoScreen: { screen: createTodoScreen },
-  detailsTodoScreen: { screen: detailsTodoScreen }
+  detailsTodoScreen: { screen: detailsTodoScreen },
+  deleteTodoScreen: { screen: deleteTodoScreen }
 });
 
 const AppStackContainer = createAppContainer(AppStackNavigator);

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, View, FlatList, Alert } from "react-native";
+import { Button, View, FlatList } from "react-native";
 import ListTodoItemRenderer from "./component/ListTodoItemRenderer";
 
 class TodoBaseScreen extends React.Component {
@@ -19,7 +19,7 @@ class TodoBaseScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: [{ key: "1", task: "First ", completed: false }]
+      todos: [{ key: "1", task: "First ", selected: false, completed: false }]
     };
   }
 
@@ -30,15 +30,19 @@ class TodoBaseScreen extends React.Component {
   }
 
   _createTodoItem = obj => {
-    const todo = { key: `${this.state.todos.length + 1}`, task: obj.task };
+    const { todos } = this.state;
+    const getLastItem = todos.length > 0 ? todos[todos.length - 1] : "0";
+    const todo = { key: `${parseInt(getLastItem.key) + 1}`, task: obj.task };
     this.setState(prevState => ({
       todos: [...prevState.todos, todo]
     }));
     this.props.navigation.navigate("todoScreen");
   };
 
-  _deleteTodoItem = () => {
-    // handle delete
+  _deleteTodoItems = keys => {
+    const filtered = this.state.todos.filter(todo => !keys.includes(todo.key));
+    this.setState({ todos: filtered });
+    this.props.navigation.navigate("todoScreen");
   };
 
   _updateTodoItem = todo => {
@@ -55,7 +59,6 @@ class TodoBaseScreen extends React.Component {
     if (index === -1) {
       // handle error
     } else {
-      const state = Object.assign({}, this.state);
       this.setState({
         todos: [
           ...this.state.todos.slice(0, index),
@@ -68,27 +71,37 @@ class TodoBaseScreen extends React.Component {
 
   _handleNavigateCreate = () => {
     this.props.navigation.navigate("createTodoScreen", {
-      save: this._createTodoItem
+      saveItem: this._createTodoItem
     });
   };
 
   _handleNavigateDetail = todo => {
     this.props.navigation.navigate("detailsTodoScreen", {
       todo,
-      update: this._updateTodoItem
+      updateItem: this._updateTodoItem
+    });
+  };
+
+  _handleDeleteItems = () => {
+    this.props.navigation.navigate("deleteTodoScreen", {
+      todos: this.state.todos,
+      deleteItems: this._deleteTodoItems
     });
   };
 
   render() {
+    const { todos } = this.state;
+
     return (
       <View>
         <FlatList
-          data={this.state.todos}
+          data={todos}
           renderItem={({ item }) => (
             <ListTodoItemRenderer
               todo={item}
               onPress={this._handleNavigateDetail}
-              completeTodo={this._completeTodoItem}
+              onLongPress={this._handleDeleteItems}
+              onTick={this._completeTodoItem}
             />
           )}
         />
