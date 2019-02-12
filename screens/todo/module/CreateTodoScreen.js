@@ -14,8 +14,8 @@ class CreateTodoScreen extends React.Component {
   }
 
   handlePress = () => {
-    const { onSave } = this.props.navigation.state.params;
-    onSave(this.state);
+    const { save } = this.props.navigation.state.params;
+    save(this.state);
   };
 
   _handleUpdate = obj => {

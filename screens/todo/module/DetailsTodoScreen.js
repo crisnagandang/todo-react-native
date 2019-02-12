@@ -23,9 +23,9 @@ class DetailsTodoScreen extends React.Component {
   };
 
   _handleSubmit = () => {
-    const { updateTodoItem } = this.props.navigation.state.params;
+    const { update } = this.props.navigation.state.params;
     const { todo } = this.state;
-    updateTodoItem(todo);
+    update(todo);
   };
 
   _readonlyView() {

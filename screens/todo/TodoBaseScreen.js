@@ -63,20 +63,19 @@ class TodoBaseScreen extends React.Component {
           ...this.state.todos.slice(index + 1)
         ]
       });
-      this.props.navigation.navigate("todoScreen");
     }
   };
 
   _handleNavigateCreate = () => {
     this.props.navigation.navigate("createTodoScreen", {
-      onSave: this._createTodoItem
+      save: this._createTodoItem
     });
   };
 
   _handleNavigateDetail = todo => {
     this.props.navigation.navigate("detailsTodoScreen", {
       todo,
-      updateTodoItem: this._updateTodoItem
+      update: this._updateTodoItem
     });
   };
 
