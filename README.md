@@ -13,8 +13,8 @@ Flow:
 ### Edit a task
 
 Flow:
-1. Double tap the task.
-2. Edit the task.
+1. Tap the task to open a new window and it's detail.
+2. Press Edit button, to edit the task.
 3. Click OK, to continue; Cancel to cancel.
 
 ### Delete a task
@@ -22,7 +22,7 @@ Flow:
 Flow:
 1. Hold the task for 2 seconds.
 2. Edit mode will be triggered.
-3. Check/tick the task you want to delete.
+3. Check/tick the tasks you want to delete.
 4. Click the delete button.
 
 ### Completing the task
